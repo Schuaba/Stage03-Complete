@@ -1,0 +1,293 @@
+:root {
+  /*color*/
+  
+  --bg-color: hsl(233, 100%, 97%);
+  --bg-header: hsl(218, 17%, 62%);
+  --box-shadow: 0, 0%, 0%;
+  --bg-h1bg: hsl(275, 18%, 79%);
+  --bg-font: hsl(312, 91%, 96%);
+  --fc-h2: hsl(232, 17%, 35%);
+  --fc-p: hsl(274, 84%, 12%);
+
+  /*font*/
+  
+  font-size: 62.50%;
+  --ff-main: 'Staatliches', cursive;
+  --ff-p: 'Palanquin';
+  --ff-desk: 'Roboto', sans-serif;
+  
+  --fs-h2: 2.0rem;
+  --lh-h2: 3.4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-color);
+}
+
+header {
+  display: grid;
+  place-items: center;
+  padding: 3.2rem 0 3.6rem;
+  background: var(--bg-header);
+}
+
+header img {
+  margin-bottom: 4.0rem;
+  animation: rotate 10s 3s backwards infinite cubic-bezier(0.6, 0.5, 0.59, 0.46);
+}
+
+header .tittle {
+  background: var(--bg-h1bg);
+  width: 100%;
+  text-align: center;
+}
+
+header .tittle h1 {
+  font-family: var(--ff-main);
+  letter-spacing: 0.5rem;
+  text-shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.25);
+  font-weight: 400;
+  font-size: 4.0rem;
+  line-height: 3.4rem;
+  color: #ffffff;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  padding: 1.8rem 3.2rem 6.0rem;
+} 
+
+.text-desk {
+  font-family: var(--ff-p);
+  text-align: center;
+  color: #ffffff;
+  display: none;
+}
+
+.text-mobile {
+  font-family: var(--ff-p);
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  text-align: center;
+  color: var(--fc-p);
+}
+
+.figures {
+  margin-top: 5rem;
+  display: grid;
+  gap: 3.6rem;
+}
+
+.page main .bundle:nth-child(5) {
+  display: none;
+}
+
+.page main .bundle:nth-child(6) {
+  display: none;
+}
+
+.bundle {
+  position: relative;
+
+  height: fit-content;
+  animation: bottomtop 1.2s 200ms backwards ease;
+}
+
+.bundle img {
+  width: 100%;
+  border-radius: 2rem;
+}
+
+.bundle h2 {
+  position: absolute;
+  font-family: var(--ff-main);
+  top: 1.7rem;
+  right: 1.7rem;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  color: var(--fc-h2);
+  letter-spacing: 0.2rem;
+  background-color: var(--bg-font);
+  border-radius: 2rem;  
+  padding: 1px 2.0rem;
+
+  animation: topbottom 1.2s 300ms backwards ease-out;
+}
+
+footer { 
+  display: none;
+  color: var(--fc-h2);
+  font-size: 1.4rem;
+  line-height: 2.8rem;
+  font-family: var(--ff-desk);
+}
+
+@keyframes rotate {
+  0% { 
+    transform:rotatey(0);
+  }
+
+  20% {
+    transform: rotatey(180deg);
+  }
+
+  40% {
+    transform: rotatey(360deg);
+  }
+
+  60% {
+    transform: rotateY(360deg);
+  }
+
+  80% {
+    transform: rotateY(360deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+
+}
+
+@keyframes topbottom {
+  0% {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bottomtop {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+  .all {
+    display: flex;
+    max-height: 100vh;
+  }
+
+  header {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  header .tittle h1 {
+    padding: 2rem 0;
+  }
+
+  .text-desk {
+    display: inline;
+    font-size: clamp(0.5rem, 0.1rem + 1.5vw, 2.0rem);
+    line-height: clamp(0.4rem, 0.1rem + 2vw, 2.4rem);
+    padding: 3.6rem 15% 0;
+  }
+
+  .text-mobile {
+    display: none;
+  }
+
+
+  .page {
+    width: 66%;
+  }
+
+  main {
+    padding-bottom: 4.0rem;
+  }
+
+  .bundle h2 {
+    display: none;
+    animation: topbottom 0.5s backwards ease-in;
+  }
+
+  .bundle:hover {
+    transform: scale(1.1);
+  }
+  .bundle:hover img {
+    box-shadow: 0px 0px 8px hsl(var(--box-shadow));
+  }
+
+  .bundle:hover h2 {
+    display: flex;
+  }
+  
+  .figures {
+    height: fit-content;
+    display: grid;
+    grid-template-areas: "A B"
+    "D B"
+    "D C";
+  }
+
+  .page main .bundle:nth-child(1) {
+    grid-area: A;
+  }
+
+  .page main .bundle:nth-child(2) {
+    grid-area: B;
+  }
+
+  .page main .bundle:nth-child(3) {
+    grid-area: C;
+  }
+
+  .page main .bundle:nth-child(4) {
+    grid-area: D;
+  }
+
+  footer {
+    display: inline;
+  }
+
+  footer a {
+    text-decoration: none;
+  }
+}
+
+
+@media (min-width: 1440px) {
+
+  .page main .bundle:nth-child(5) {
+    display: inline;
+    grid-area: E;
+  }
+
+  .page main .bundle:nth-child(6) {
+    display: inline;
+    grid-area: F;
+  }
+
+  .figures {
+  grid-template-areas: "A B E" 
+  "D B F"
+  "D C F";
+  }
+}
